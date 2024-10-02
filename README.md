@@ -11,7 +11,6 @@ This Flutter-based mobile application is designed to display real-time cryptocur
     - **Current Price** in USD.
     - **Daily Price Change** showing the difference in price since the start of the day.
     - **Percentage Change** indicating the percentage increase or decrease.
-    - **Chg/Chg%** values (Change and Change Percentage) for deeper insights into the market movement.
 - **Interactive Price Chart**: When a cryptocurrency is selected from the watchlist, the user is presented with an interactive price chart showing real-time price movement. Users can zoom and pan to focus on specific time intervals.
 - **Real-Time Updates**: The app uses WebSocket technology to ensure that all cryptocurrency data is updated in real time without needing to refresh.
 - **Elegant UI**: The app design includes smooth animations, modern fonts, and clean card-based layouts, making the interface visually appealing and intuitive to navigate.
@@ -25,9 +24,32 @@ This Flutter-based mobile application is designed to display real-time cryptocur
 ## Technical Overview
 
 - **Real-Time Data via WebSockets**: The app connects to a WebSocket server that streams cryptocurrency data, allowing for instant price updates.
-- **Watchlist Management**: Users can monitor their selected cryptocurrencies and see key statistics like price, percentage change, and daily movement.
-- **Interactive Line Charts**: Detailed charts provide users with a graphical representation of price movement over time. The X-axis represents time in intervals, and the Y-axis shows the price in USD.
-- **Responsive Design**: The app is built with adaptive layouts that provide a great experience on different screen sizes.
+- **Interactive Watchlist and Line Charts**: Detailed Watchlist and Charts provide users can monitor their selected cryptocurrencies with a list and a graphical representation of price movement over time. The X-axis represents time in intervals, and the Y-axis shows the price in USD.
+
+## Clean Architecture Implementation
+
+This application follows the **Clean Architecture** pattern, which provides a clear separation of concerns and ensures a modular, scalable, and maintainable codebase. The architecture consists of the following layers:
+
+### 1. **Core Layer**
+- Contains fundamental elements such as environment configurations, error handling, dependency injection, and core services.
+- These components are essential and used across the entire application, making them reusable and easily modifiable.
+
+### 2. **Data Layer**
+- Responsible for managing data sources, including WebSocket and RESTful API interactions, models, and repositories.
+- This layer abstracts the details of data retrieval and provides a unified interface for fetching data, ensuring the data source implementations (WebSocket, APIs, etc.) are hidden from the rest of the app.
+
+### 3. **Domain Layer**
+- Contains the business logic of the application, including use cases and repository interfaces.
+- It is independent of the data source and presentation layers, ensuring that core functionality is isolated and reusable in other contexts if needed.
+
+### 4. **Presentation Layer**
+- Manages the UI components, utilizing `Bloc` and `Cubit` for state management to ensure that the user interface responds to changes in the data.
+- This layer interacts with the domain layer to render live data in charts and watchlists, providing a seamless and real-time experience for the user.
+
+## Scalability and Maintainability
+
+Thanks to **Clean Architecture**, the application is modular and highly maintainable. Each layer is loosely coupled, making it easier to add new features without affecting other parts of the app. The modular design also allows for individual components to be tested and maintained independently, ensuring the app's scalability as it grows in complexity.
+
 
 ## Sample Data Structure
 
