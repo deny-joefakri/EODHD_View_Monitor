@@ -21,11 +21,6 @@ This Flutter-based mobile application is designed to display real-time cryptocur
 |--------------|----------|
 | ![Android Demo](assets/android.gif) | ![iOS Demo](assets/ios.gif) |
 
-## Technical Overview
-
-- **Real-Time Data via WebSockets**: The app connects to a WebSocket server that streams cryptocurrency data, allowing for instant price updates.
-- **Interactive Watchlist and Line Charts**: Detailed Watchlist and Charts provide users can monitor their selected cryptocurrencies with a list and a graphical representation of price movement over time. The X-axis represents time in intervals, and the Y-axis shows the price in USD.
-
 ## Technical and Architecture Overview
 
 This section provides an overview of the app’s key functionalities and how it’s structured using **Clean Architecture** to maintain scalability, modularity, and separation of concerns.
