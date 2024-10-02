@@ -26,30 +26,42 @@ This Flutter-based mobile application is designed to display real-time cryptocur
 - **Real-Time Data via WebSockets**: The app connects to a WebSocket server that streams cryptocurrency data, allowing for instant price updates.
 - **Interactive Watchlist and Line Charts**: Detailed Watchlist and Charts provide users can monitor their selected cryptocurrencies with a list and a graphical representation of price movement over time. The X-axis represents time in intervals, and the Y-axis shows the price in USD.
 
-## Clean Architecture Implementation
+## Architecture Overview
 
-This application follows the **Clean Architecture** pattern, which provides a clear separation of concerns and ensures a modular, scalable, and maintainable codebase. The architecture consists of the following layers:
+The project is structured into several layers, adhering to the Clean Architecture design:
 
-### 1. **Core Layer**
-- Contains fundamental elements such as environment configurations, error handling, dependency injection, and core services.
-- These components are essential and used across the entire application, making them reusable and easily modifiable.
+### 1. Core Layer
+- **Purpose**: Contains essential utilities shared across the app, such as environment configuration, dependency injection, and constants.
+- **Key Files**:
+   - `text_constants.dart`: Defines constants for text and other global values used throughout the app.
 
-### 2. **Data Layer**
-- Responsible for managing data sources, including WebSocket and RESTful API interactions, models, and repositories.
-- This layer abstracts the details of data retrieval and provides a unified interface for fetching data, ensuring the data source implementations (WebSocket, APIs, etc.) are hidden from the rest of the app.
+### 2. Data Layer
+- **Datasources**: Responsible for interacting with external data sources, like WebSockets and REST APIs.
+   - `socket_datasource.dart`: Manages WebSocket communication for real-time data streaming.
+- **Models**: Defines data structures used throughout the app.
+   - `crypto_model.dart`: Represents the cryptocurrency data structure.
+- **Repositories (Implementation)**: Implements the logic for data management and communicates with the domain layer.
+   - `crypto_repository_impl.dart`: Concrete implementation of repository patterns for fetching data.
 
-### 3. **Domain Layer**
-- Contains the business logic of the application, including use cases and repository interfaces.
-- It is independent of the data source and presentation layers, ensuring that core functionality is isolated and reusable in other contexts if needed.
+### 3. Domain Layer
+- **Repositories (Interface)**: Defines repository contracts, which ensure the domain layer is abstracted from specific data sources.
+   - `crypto_repository.dart`: Abstract repository that the data layer implements.
+- **Use Cases**: Encapsulates the business logic.
+   - `get_crypto_usecase.dart`: Handles retrieving cryptocurrency data as a business operation.
 
-### 4. **Presentation Layer**
-- Manages the UI components, utilizing `Bloc` and `Cubit` for state management to ensure that the user interface responds to changes in the data.
-- This layer interacts with the domain layer to render live data in charts and watchlists, providing a seamless and real-time experience for the user.
+### 4. Presentation Layer
+- **Blocs**: Manages application state using the BLoC (Business Logic Component) pattern.
+   - `crypto_bloc.dart`: Handles the state management for real-time cryptocurrency updates.
+   - `crypto_state.dart`: Defines different states for the app (e.g., loading, data received, error).
+- **UI Pages**: Components responsible for rendering the user interface.
+   - `dashboard_page.dart`: Displays the dashboard containing the cryptocurrency watchlist and charts.
+   - `stock_card.dart`: A widget displaying individual cryptocurrency details in the watchlist.
+   - `crypto_chart.dart`: Displays price movement charts for selected cryptocurrencies.
 
-## Scalability and Maintainability
+### 5. Utilities
+- Contains helper functions and utilities for enhancing app functionality.
 
-Thanks to **Clean Architecture**, the application is modular and highly maintainable. Each layer is loosely coupled, making it easier to add new features without affecting other parts of the app. The modular design also allows for individual components to be tested and maintained independently, ensuring the app's scalability as it grows in complexity.
-
+---
 
 ## Sample Data Structure
 
