@@ -6,7 +6,7 @@ import 'core/injection/dependency_injection.dart';
 
 
 void main() async {
-  // await dotenv.load(fileName: ".env");
+  await dotenv.load(fileName: ".env");
   runApp(const MyApp());
 }
 
