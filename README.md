@@ -32,23 +32,18 @@ The project is structured into several layers, adhering to the Clean Architectur
 
 ### 1. Core Layer
 - **Purpose**: Contains essential utilities shared across the app, such as environment configuration, dependency injection, and constants.
-- **Key Files**:
-   - `text_constants.dart`: Defines constants for text and other global values used throughout the app.
-
 ### 2. Data Layer
-- **Datasources**: Responsible for interacting with external data sources, like WebSockets and REST APIs.
+- **Datasources**: Responsible for interacting with external data sources, like WebSockets or REST APIs.
    - `socket_datasource.dart`: Manages WebSocket communication for real-time data streaming.
 - **Models**: Defines data structures used throughout the app.
    - `crypto_model.dart`: Represents the cryptocurrency data structure.
 - **Repositories (Implementation)**: Implements the logic for data management and communicates with the domain layer.
    - `crypto_repository_impl.dart`: Concrete implementation of repository patterns for fetching data.
-
 ### 3. Domain Layer
 - **Repositories (Interface)**: Defines repository contracts, which ensure the domain layer is abstracted from specific data sources.
    - `crypto_repository.dart`: Abstract repository that the data layer implements.
 - **Use Cases**: Encapsulates the business logic.
    - `get_crypto_usecase.dart`: Handles retrieving cryptocurrency data as a business operation.
-
 ### 4. Presentation Layer
 - **Blocs**: Manages application state using the BLoC (Business Logic Component) pattern.
    - `crypto_bloc.dart`: Handles the state management for real-time cryptocurrency updates.
@@ -57,7 +52,6 @@ The project is structured into several layers, adhering to the Clean Architectur
    - `dashboard_page.dart`: Displays the dashboard containing the cryptocurrency watchlist and charts.
    - `stock_card.dart`: A widget displaying individual cryptocurrency details in the watchlist.
    - `crypto_chart.dart`: Displays price movement charts for selected cryptocurrencies.
-
 ### 5. Utilities
 - Contains helper functions and utilities for enhancing app functionality.
 
