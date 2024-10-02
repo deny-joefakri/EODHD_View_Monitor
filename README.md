@@ -18,10 +18,9 @@ This Flutter-based mobile application is designed to display real-time cryptocur
 
 ## Demo
 
-<div style="display: flex; justify-content: space-between;">
-  <img src="assets/android.gif" alt="Android Demo" style="width: 48%; border: 1px solid #ccc; border-radius: 8px;" />
-  <img src="assets/ios.gif" alt="iOS Demo" style="width: 48%; border: 1px solid #ccc; border-radius: 8px;" />
-</div>
+| Android Demo | iOS Demo |
+|--------------|----------|
+| ![Android Demo](assets/android.gif) | ![iOS Demo](assets/ios.gif) |
 
 ## Technical Overview
 
